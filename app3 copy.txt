@@ -1,0 +1,63 @@
+from tkinter import *
+
+root = Tk()
+root.title('app')
+root.iconbitmap('icon.ico')
+root.geometry("700x400")
+root.configure(background="lightgrey")
+root.resizable(False, False)
+
+def make_invisible():
+    button1.pack_forget()
+
+#drop down boxes
+
+clicked = StringVar()
+clicked.set("select your symptoms")
+
+drop = OptionMenu(root, clicked, "shortness of breath","swelling or lumps in the body","muscle or body aches")
+drop.pack()
+
+
+
+btn=Button(root, text="search", font= ('Helvetica', 10), command=make_invisible)
+btn.pack(pady=20)   
+
+#add image
+bg = PhotoImage(file = "green.jpg")
+
+#canvas
+canvas1 = Canvas( root, width = 700,
+				height = 400)
+
+canvas1.pack(fill = "both", expand = False)
+
+#display image
+canvas1.create_image( 0, 0, image = bg,
+					anchor = "nw")
+
+#text
+canvas1.create_text( 200, 250, text = "")
+
+#buttons
+button1 = Button( root, text = "╬")
+button3 = Button( root, text = "╬")
+button2 = Button( root, text = "╬")
+
+#display buttons
+button1_canvas = canvas1.create_window( 100, 90,
+									anchor = "nw",
+									window = button1)
+
+button2_canvas = canvas1.create_window( 300, 280,
+									anchor = "nw",
+									window = button2)
+
+button3_canvas = canvas1.create_window( 450, 145, anchor = "nw",
+									window = button3)
+
+
+
+#execute 
+root.mainloop()
+
